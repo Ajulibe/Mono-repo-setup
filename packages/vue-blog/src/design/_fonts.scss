@@ -1,0 +1,64 @@
+/* stylelint-disable */
+
+/*=============================================
+=            FONT SETUP            =
+=============================================*/
+
+@font-face {
+  font-family: FocusGrotesk;
+  font-weight: 900;
+  font-style: normal;
+  font-display: auto;
+  src: local('FocusGrotesk'), url('assets/fonts/FocusGrotesk/FocusGrotesk.woff2') format('woff2'),
+    url('assets/fonts/FocusGrotesk/FocusGrotesk.woff') format('woff');
+}
+
+@font-face {
+  font-family: Avenir;
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  src: local('Avenir LT Std'), url('assets/fonts/Avenir/Avenir.otf') format('otf');
+}
+
+$heading-font-family: 'FocusGrotesk';
+$body-font-family: 'Avenir';
+$color-text: #ffffff;
+
+%font-xs {
+  font-family: $body-font-family;
+  font-weight: 400;
+  color: $color-text;
+}
+
+%font-sm {
+  font-family: $body-font-family;
+  font-weight: 400;
+  color: $color-text;
+}
+
+%font-tiny {
+  font-family: $heading-font-family;
+  font-weight: 900;
+  color: $color-text;
+}
+
+%font-base {
+  font-family: $heading-font-family;
+  font-weight: 900;
+  color: $color-text;
+}
+
+%font-lg {
+  font-family: $heading-font-family;
+  font-weight: 900;
+  color: $color-text;
+}
+
+%font-xl {
+  font-family: $heading-font-family;
+  font-weight: 900;
+  color: $color-text;
+}
+
+/*=====  End of font setup  ======*/

@@ -1,0 +1,26 @@
+{
+  "name": "@ajulibe/core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^4.0.0",
+    "next-transpile-modules": "^9.0.0"
+  },
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/tailwind-blog",
+      "**/tailwind-blog/**"
+    ]
+  },
+  "scripts": {
+    "build": "lerna run build"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
