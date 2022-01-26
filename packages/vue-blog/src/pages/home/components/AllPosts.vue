@@ -1,19 +1,23 @@
 <template>
-  <div class="flex flex-col justify-center w-full">
+  <div class="flex flex-col justify-center w-full border-red-100">
     <p class="font-heading md:text-tiny mb-[2.5rem]">Latest Article</p>
-    <div class="wrapper">
-      <div v-for="item in posts" :key="item.posts" class="col-span-1 flex flex-col w-[296px]">
+    <div class="wrapper border-red-500">
+      <div
+        v-for="(item, index) in state.posts"
+        :key="index"
+        class="col-span-1 flex flex-col w-[296px]"
+      >
         <div class="h-[184px] w-full bg-slate-600"></div>
 
         <div class="flex flex-col">
           <div
             class="mt-8 mb-4 text-[1.2rem] md:text-sm font-heading text-left h-24 text-ellipsis overflow-hidden"
           >
-            {{ item.title }}
+            {{ item.node.title }}
           </div>
 
-          <div class="font-heading text-[0.9rem] md:text-xs font-body mb-8 text-left">
-            {{ item.body }}
+          <div class="text-[0.9rem] md:text-xs font-body mb-8 text-left">
+            {{ item.node.excerpt }}
           </div>
         </div>
       </div>
@@ -21,27 +25,24 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import axios from 'axios'
+<script setup lang="ts">
+/* eslint-disable */
+import { reactive, watch } from 'vue'
+import { useQuery } from '@vue/apollo-composable'
+import { GET_POSTS } from '@/libs/queries'
 
-export default defineComponent({
-  name: 'AllPosts',
-  data() {
-    return { posts: [] }
-  },
+interface IComponent {
+  posts: Array<Record<string, any>>
+}
 
-  mounted() {
-    this.getAllPosts()
-  },
+const state = reactive<IComponent>({
+  posts: [],
+})
 
-  methods: {
-    getAllPosts() {
-      axios
-        .get('https://jsonplaceholder.typicode.com/posts')
-        .then((response) => (this.posts = response.data))
-    },
-  },
+const { result } = useQuery(GET_POSTS)
+
+watch(result, (value) => {
+  state.posts = value.postsConnection.edges
 })
 </script>
 
