@@ -8,7 +8,7 @@
     "lint": "yarn lint:js && yarn lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue src --fix",
     "lint:style": "stylelint \"./src/**/*.vue\" \"./src/**/*.scss\" --fix",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "yarn run apollo client:codegen --target typescript --localSchemaFile output.gql --outputFlat --includes \"src/**\" --excludes \"src/generated\" src/generated --watch"
   },
   "dependencies": {
     "@apollo/client": "^3.5.7",
@@ -27,10 +27,16 @@
     "@babel/plugin-transform-runtime": "^7.16.8",
     "@babel/preset-env": "^7.16.8",
     "@graphql-codegen/cli": "2.4.0",
+    "@graphql-codegen/introspection": "2.1.1",
+    "@graphql-codegen/typescript": "2.4.2",
+    "@graphql-codegen/typescript-document-nodes": "2.2.2",
+    "@graphql-codegen/typescript-graphql-files-modules": "2.1.1",
+    "@graphql-codegen/typescript-operations": "2.2.2",
     "@types/webpack-env": "^1.16.3",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "@vue/compiler-sfc": "^3.2.26",
+    "apollo": "^2.33.9",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
@@ -67,17 +73,13 @@
     "thread-loader": "^3.0.4",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.4",
+    "vue-cli-plugin-apollo": "~0.22.2",
     "vue-eslint-parser": "^8.0.1",
     "vue-loader": "^16.8.3",
     "vue-style-loader": "^4.1.3",
     "webpack": "^5.65.0",
     "webpack-dev-server": "^4.7.2",
-    "webpack-merge": "^5.8.0",
-    "@graphql-codegen/typescript-document-nodes": "2.2.2",
-    "@graphql-codegen/typescript-operations": "2.2.2",
-    "@graphql-codegen/typescript": "2.4.2",
-    "@graphql-codegen/typescript-graphql-files-modules": "2.1.1",
-    "@graphql-codegen/introspection": "2.1.1"
+    "webpack-merge": "^5.8.0"
   },
   "engines": {
     "node": ">=12.13.0"
